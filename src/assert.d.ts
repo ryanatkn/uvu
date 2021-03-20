@@ -2,8 +2,8 @@ type Types = 'string' | 'number' | 'boolean' | 'object' | 'undefined' | 'functio
 
 export type Message = string | Error;
 export function ok(actual: any, msg?: Message): asserts actual;
-export function is(actual: any, expects: any, msg?: Message): void;
-export function equal(actual: any, expects: any, msg?: Message): void;
+export function is<T>(actual: T, expects: T, msg?: Message): void;
+export function equal<T>(actual: T, expects: T, msg?: Message): void;
 export function type(actual: any, expects: Types, msg?: Message): void;
 export function instance(actual: any, expects: any, msg?: Message): void;
 export function snapshot(actual: string, expects: string, msg?: Message): void;
@@ -18,7 +18,7 @@ export namespace is {
 }
 
 export namespace not {
-	function ok(actual: any, msg?: Message): void;
+	function ok(actual: any, msg?: Message): void; // TODO assert falsy?
 	function equal(actual: any, expects: any, msg?: Message): void;
 	function type(actual: any, expects: Types, msg?: Message): void;
 	function instance(actual: any, expects: any, msg?: Message): void;
